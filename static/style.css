@@ -8,24 +8,30 @@ body {
 
 ul {
     list-style: none;
+    padding : 0;
 }
 
-.container {
-    margin :auto;
-    width: 1000px;
-
-}
-
-.header {
+nav {
+    max-width: 1000px;
     display : flex;
     justify-content: space-between;
-    padding : 10px 20px;
-    background :blue;
+    padding : 20px;
+}
+
+.mainImage {
+    margin: auto;
+}
+
+.mainIcon img{
+    width: 100px;
 }
 
 .subtitle-container {
     padding : 10px 20px;
-    background: red;
+    background-image : url('mainimage.jpg');
+    background-repeat : no-repeat;
+    background-size : 100vw 300px;
+    background-position : center;
 }
 
 .itemList {
@@ -35,17 +41,20 @@ ul {
 .itemList {
     display : flex;
     flex-wrap: wrap;
-    justify-content: center;
+
+    background : #80FFA8;
 }
 
 
 .item {
-    height : 250px;
-    width : 250px;
-    background : green;
+    height : 300px;
+    width : 300px;
+    background : grey;
     margin : 20px;
 
 }
+
+
 
 
 

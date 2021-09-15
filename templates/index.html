@@ -8,7 +8,9 @@
             src="https://kit.fontawesome.com/99b46b0b5a.js"
             crossorigin="anonymous"
     ></script>
+
     <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <script !src="../static/main.js" defer></script>
     <script>
         // like버튼 클릭시
@@ -24,18 +26,24 @@
             location.reload() //페이지 새로고침
         }
     </script>
+
 </head>
 <body>
 <div class="container">
-    <header class="header">
-        <img class="logo" src="" alt="제목"/>
-        <button onclick="window.location.href = '/login'">로그아웃</button>
+    <nav>
+        <a class="mainIcon" href="/">
+            <img src="{{ url_for('static', filename='워터멜론icon.png') }}">
+        </a>
+{#        <button onclick="window.location.href = '/login'">로그아웃</button>#}
+            <button class="button is-success">로그아웃</button>
         <!--버튼클릭시 로그인페이지로 이동-->
-    </header>
+    </nav>
+
     <div class="subtitle-container">
         <h3>{{ title }}</h3>
         <h2>{{ subtitle }}</h2>
     </div>
+
     <ul class="itemList">
         {% for item in list %}
             <li class="item">
@@ -45,7 +53,7 @@
                     <span class="item__description__singer">{{ item.artist }}</span><!-- 진자템플릿언어 -->
                 </div>
                 <button class="item_like" onclick="plus()"><i class="far fa-thumbs-up"></i></button>
-                <span class = "item_like-ount"></span>
+                <span class="item_like-ount"></span>
             </li>
         {% endfor %}
     </ul>

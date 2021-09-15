@@ -40,7 +40,7 @@ def main():
 @app.route('/detail/<title>')
 def detail(title):
 
-##
+
     ## db에서 title : title인 페이지 찾는다.
     music = db.music_list.find_one({'title':title},{'_id':False})
     ## 댓글 포함
