@@ -1,0 +1,52 @@
+body {
+    margin : 0px;
+}
+
+* {
+    box-sizing : border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    margin :auto;
+    width: 1000px;
+
+}
+
+.header {
+    display : flex;
+    justify-content: space-between;
+    padding : 10px 20px;
+    background :blue;
+}
+
+.subtitle-container {
+    padding : 10px 20px;
+    background: red;
+}
+
+.itemList {
+
+}
+
+.itemList {
+    display : flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.item {
+    height : 250px;
+    width : 250px;
+    background : green;
+    margin : 20px;
+
+}
+
+
+
+

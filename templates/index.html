@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <script
+            src="https://kit.fontawesome.com/99b46b0b5a.js"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../static/style.css"/>
+    <script !src="../static/main.js" defer></script>
+    <script>
+        // like버튼 클릭시
+        function plus() {
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: {},
+                success: function (response) {
+                    console.log(response)
+                }
+            })
+            location.reload() //페이지 새로고침
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <img class="logo" src="" alt="제목"/>
+        <button onclick="window.location.href = '/login'">로그아웃</button>
+        <!--버튼클릭시 로그인페이지로 이동-->
+    </header>
+    <div class="subtitle-container">
+        <h3>{{ title }}</h3>
+        <h2>{{ subtitle }}</h2>
+    </div>
+    <ul class="itemList">
+        {% for item in list %}
+            <li class="item">
+                <a href='detail/{{ item.title }}'><img class="item__img" src="{{ item.img }}" alt="음악 이미지"/></a>
+                <div class="item__description">
+                    <h3 class="item__description__title">{{ item.title }}</h3>
+                    <span class="item__description__singer">{{ item.artist }}</span><!-- 진자템플릿언어 -->
+                </div>
+                <button class="item_like" onclick="plus()"><i class="far fa-thumbs-up"></i></button>
+                <span class = "item_like-ount"></span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
+
+
