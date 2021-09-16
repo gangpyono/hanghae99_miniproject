@@ -14,7 +14,20 @@
     <script !src="../static/main.js" defer></script>
     <script>
         // like버튼 클릭시
-        function plus() {
+        function up(id) {
+            $.ajax({
+                type: "POST",
+                url: "/api/up",
+                data: {id_give:id},
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload() //페이지 새로고침
+                }
+            });
+            console.log(id);
+        }
+
+        function down() {
             $.ajax({
                 type: "POST",
                 url: "/",
@@ -34,27 +47,40 @@
         <a class="mainIcon" href="/">
             <img src="{{ url_for('static', filename='워터멜론icon.png') }}">
         </a>
-{#        <button onclick="window.location.href = '/login'">로그아웃</button>#}
+        <div class="buttons">
             <button class="button is-success">로그아웃</button>
+        </div>
         <!--버튼클릭시 로그인페이지로 이동-->
     </nav>
-
     <div class="subtitle-container">
         <h3>{{ title }}</h3>
         <h2>{{ subtitle }}</h2>
     </div>
-
     <ul class="itemList">
         {% for item in list %}
-            <li class="item">
-                <a href='detail/{{ item.title }}'><img class="item__img" src="{{ item.img }}" alt="음악 이미지"/></a>
-                <div class="item__description">
-                    <h3 class="item__description__title">{{ item.title }}</h3>
-                    <span class="item__description__singer">{{ item.artist }}</span><!-- 진자템플릿언어 -->
+            <div class="card item">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <a href='detail/{{ item.title }}'>
+                            <img src="{{ item.img }}" alt="Placeholder image">
+                        </a>
+                    </figure>
                 </div>
-                <button class="item_like" onclick="plus()"><i class="far fa-thumbs-up"></i></button>
-                <span class="item_like-ount"></span>
-            </li>
+                <div class="card-content">
+                    <p class="title is-4 ">{{ item.title }}</p>
+                    <p class="subtitle is-6   ">{{ item.artist }}</p>
+                    <div class="heart">
+                        <button onclick="up('{{ item.id }}')" class="button is-primary is-light heart-btn">
+                            <i class="fas fa-heart heart-btn__icon"></i>
+                            <span class="heart-btn__count">{{ item.like }}</span>
+                        </button>
+                        <button onclick="down()" class="button is-primary is-light heart-btn">
+                            <i class="fas fa-heart-broken heart-btn__icon"></i>
+                            <span class="heart__count heart-btn__count">{{ item.like }}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     </ul>
 </div>
