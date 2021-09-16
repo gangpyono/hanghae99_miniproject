@@ -78,7 +78,7 @@ footer {
 
 /* index - 메인배너 */
 .indexMainImage{
-    background-image: url("backimage.jpg");
+    background-image: url("background-image.jpg");
     background-size: cover;
     width: 100%;
     height: 300px;
@@ -238,3 +238,6 @@ button:focus{
 .commentDrop:hover{
     transform: rotate(180deg);
 }
+
+
+

@@ -24,7 +24,7 @@ def home():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
 
-        main_title = "H!"  # 진자 탬플릿언어에 사용될 내용
+        main_title = "Hi,"  # 진자 탬플릿언어에 사용될 내용
         subtitle = "들으면 기분좋아지는 여름노래 모음"
         music_list = list(db.music_list.find({}, {'_id': False}))
         return render_template("index.html", title=main_title, subtitle=subtitle, list=music_list)

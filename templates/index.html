@@ -26,40 +26,50 @@
 
     </head>
     <body>
-        <div class="container">
+        <div class="container1">
+
+            <!-- navbar -->
             <nav>
                 <a class="mainIcon" href="/">
                     <img src="{{ url_for('static', filename='워터멜론icon.png') }}">
                 </a>
-{#                <div class="buttons">#}
-{#                    <button class="Button is-success">로그아웃</button>#}
-{#                </div>#}
-                <!--버튼클릭시 로그인페이지로 이동-->
-            </nav>
-            <div class="subtitle-container">
                 <div class="indexTitle">{{ title }} hanghae99님!</div>
-                <div class="indexSub">{{ subtitle }}</div>
+                <!--버튼클릭시 로그인페이지로 이동-->
+{#              <div class="buttons">#}
+{#                  <button class="Button is-success">로그아웃</button>#}
+{#              </div>#}
+            </nav>
+
+            <!-- 메인배너 -->
+            <div class="indexMainImage">
+                <p class="indexMainImageTitle1">당신의 여름을 식혀줄 음악사이트,</p>
+                <span class="indexMainImageTitle2">WaterMelon</span>
             </div>
-            <div class="image1">
+
+            <!-- 카드 리스트 -->
+            <div class="imageCard">
                 <ul class="itemList">
                     {% for item in list %}
                         <div class="card item">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <a href='detail/{{ item.title }}'>
-                                        <img src='{{ item.img }}' alt="Placeholder image">
-                                    </a>
-                                </figure>
-                            </div>
+                            <a href='detail/{{ item.title }}'>
+                                <img src="{{ item.img }}" alt="Placeholder image">
+                            </a>
                             <div class="card-content">
-                                <p class="title is-4 ">{{ item.title }}</p>
-                                <p class="subtitle is-6">{{ item.artist }}</p>
-                                <p>{{ item.alumb }}</p>
+                                <p class="contentTitle">{{ item.title }}</p>
+                                <p class="contentArtist">{{ item.artist }}</p>
                             </div>
                         </div>
                     {% endfor %}
                 </ul>
             </div>
+
+            <!-- 푸터 -->
+            <footer>
+                <div class="footerInfo">
+                    <span class="footerInfoTitle">항해99 1주차 미니프로젝트 - 25조</span>
+                    <span class="footerInfoText">노강표 | 이민국 | 오준석 | 윤진선</span>
+                </div>
+            </footer>
         </div>
     </body>
 </html>
