@@ -1,17 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>{{ music }}</h1>
-<p align="middle">
-    <iframe width="560" height="315" src="{{ music.url }}" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-</p>
-</body>
-</html>
+    <head>
 
+        <!-- Webpage Title -->
+        <title>Water Melon</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bulma CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+        <!-- Font Awesome CSS -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/2d323a629b.js" ></script>
+
+        <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+        <script>
+            // {% if msg %}
+            //     alert("{{ msg }}")
+            // {% endif %}
+        </script>
+
+    </head>
+    <body>
+        <nav>
+            <a class="mainIcon" href="/">
+                <img src="{{ url_for('static', filename='워터멜론icon.png') }}">
+            </a>
+        </nav>
+        <section class="mainImage">
+           <div class="musicVideo">
+               <p align="middle">
+                   <iframe width="560" height="315" src="{{ music.url }}" frameborder="0"
+                           allow="accelerometer; autoplay=0; autohide=1; controls=1; encrypted-media; gyroscope; picture-in-picture"
+                           allowfullscreen></iframe>
+               </p>
+           </div>
+        </section>
+        <section class="mainInfo">
+            <div class="detailInfoTitle">
+                    <div class="title2">
+                        <span class="detailTitle">살짝 설렜어</span>
+                        <span class="detailSinger">오마이걸(OH MY GIRL)</span>
+                    </div>
+                <div class="titleIcon"><i class="fab fa-gratipay"></i></div>
+            </div>
+            <div class="album">
+                <img src="{{ url_for('static', filename='nonstop.jpg') }}">
+                <span class="albumInfo">
+                    앨범명 : Nonstop<br>
+                    이 노래를 찜한 사람 : 4명
+                </span>
+            </div>
+        </section>
+        <section class="comment">
+
+        </section>
+    </body>
+</html>

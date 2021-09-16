@@ -1,91 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+    <head>
 
-    <script
-            src="https://kit.fontawesome.com/99b46b0b5a.js"
-            crossorigin="anonymous"
-    ></script>
+        <!-- Webpage Title -->
+        <title>Water Melon</title>
 
-    <link rel="stylesheet" href="../static/style.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <script !src="../static/main.js" defer></script>
-    <script>
-        // // like버튼 클릭시
-        // function up(id) {
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "/api/up",
-        //         data: {id_give:id},
-        //         success: function (response) {
-        //             alert(response['msg']);
-        //             window.location.reload() //페이지 새로고침
-        //         }
-        //     });
-        //     console.log(id);
-        // }
-        //
-        // function down() {
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "/",
-        //         data: {},
-        //         success: function (response) {
-        //             console.log(response)
-        //         }
-        //     })
-        //     location.reload() //페이지 새로고침
-        // }
-    </script>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</head>
-<body>
-<div class="container">
-    <nav>
-        <a class="mainIcon" href="/">
-            <img src="{{ url_for('static', filename='워터멜론icon.png') }}">
-        </a>
-        <div class="buttons">
-            <button class="button is-success">로그아웃</button>
-        </div>
-        <!--버튼클릭시 로그인페이지로 이동-->
-    </nav>
-    <div class="subtitle-container">
-        <h3>{{ title }}</h3>
-        <h2>{{ subtitle }}</h2>
-    </div>
-    <ul class="itemList">
-        {% for item in list %}
-            <div class="card item">
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                        <a href='detail/{{ item.title }}'>
-                            <img src="{{ item.img }}" alt="Placeholder image">
-                        </a>
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <p class="title is-4 ">{{ item.title }}</p>
-                    <p class="subtitle is-6">{{ item.artist }}</p>
-                    <p>{{ item.alumb }}</p>
-{#                    <div class="heart">#}
-{#                        <button onclick="up('{{ item.id }}')" class="button is-primary is-light heart-btn">#}
-{#                            <i class="fas fa-heart heart-btn__icon"></i>#}
-{#                            <span class="heart-btn__count">{{ item.like }}</span>#}
-{#                        </button>#}
-{#                        <button onclick="down()" class="button is-primary is-light heart-btn">#}
-{#                            <i class="fas fa-heart-broken heart-btn__icon"></i>#}
-{#                            <span class="heart__count heart-btn__count">{{ item.like }}</span>#}
-{#                        </button>#}
-{#                    </div>#}
-                </div>
+        <!-- Bulma CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <!-- Font Awesome CSS -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+                <a class="mainIcon" href="/">
+                    <img src="{{ url_for('static', filename='워터멜론icon.png') }}">
+                </a>
+{#                <div class="buttons">#}
+{#                    <button class="Button is-success">로그아웃</button>#}
+{#                </div>#}
+                <!--버튼클릭시 로그인페이지로 이동-->
+            </nav>
+            <div class="subtitle-container">
+                <div class="indexTitle">{{ title }} hanghae99님!</div>
+                <div class="indexSub">{{ subtitle }}</div>
             </div>
-        {% endfor %}
-    </ul>
-</div>
-</body>
+            <div class="image1">
+                <ul class="itemList">
+                    {% for item in list %}
+                        <div class="card item">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <a href='detail/{{ item.title }}'>
+                                        <img src="{{ item.img }}" alt="Placeholder image">
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-4 ">{{ item.title }}</p>
+                                <p class="subtitle is-6">{{ item.artist }}</p>
+                                <p>{{ item.alumb }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </body>
 </html>
 
 
