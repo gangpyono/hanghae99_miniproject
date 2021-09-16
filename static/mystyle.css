@@ -1,12 +1,13 @@
+* {
+    box-sizing : border-box;
+}
+
 body {
     margin : 0px;
     min-height: 100vh;
     font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
-* {
-    box-sizing : border-box;
-}
 p {
     margin  :0;
 }
@@ -16,52 +17,146 @@ ul {
     padding : 0;
 }
 
-.container {
-    max-width : 1000px;
+/* index */
+.container1 {
+    margin: auto;
 }
 
 /* navbar */
 nav {
-    padding-bottom: 10px;
-    max-width: 1000px;
-    margin: auto;
     position: sticky;
     height: 88px;
     top: 0px;
-    border-bottom: 2px solid #4acb78;
     background-color: white;
-    order: 1;
-}
-
-.mainImage {
-    max-width: 1000px;
-    margin: auto;
+    z-index : 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 3px solid #7ef1a1;
 }
 
 .mainIcon img{
     width: 100px;
-    margin: 20px 20px 0px 20px;
+    display: flex;
+}
+
+.indexTitle{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* 푸터 */
+footer {
+    background-color: #343434;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerInfo{
+    max-width: 1000px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footerInfoTitle{
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 1px solid white;
+    padding-bottom: 3px;
+}
+
+.footerInfoText{
+    font-size: 1rem;
+    padding-top: 3px;
+}
+
+/* index - 메인배너 */
+.indexMainImage{
+    background-image: url("backimage.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.indexMainImageTitle1 {
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 1px black;
+}
+
+.indexMainImageTitle2{
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+}
+
+.indexSub{
+    color: #909090;
+    font-size: 1.2rem;
+}
+
+/* index - 카드 리스트 */
+.imageCard{
+    max-width: 1000px;
+    margin: auto;
+    padding-top: 10px;
+    z-index : 2;
+}
+
+.itemList {
+    display : flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card.item {
+    flex-basis : 30%;
+    margin: 20px 0px;
+    transition: all 300ms ease-in;
+}
+
+.card.item:hover {
+    transform: translate(-5px,-5px);
+    box-shadow: 10px 10px 5px grey;
+}
+
+.contentTitle{
+    font-size: 1.2rem;
+    color: black;
+    font-weight: bold;
+}
+
+.contentArtist{
+    color: #909090;
+}
+
+/* detail */
+/* detail - 뮤비 */
+.mainImage {
+    max-width: 1000px;
+    margin: auto;
 }
 
 .musicVideo{
     margin: 20px;
 }
 
+/* detail - 가수, 곡명, 찜버튼 */
 .mainInfo {
     max-width: 565px;
     margin: auto;
-}
-
-.detailTitle{
-    font-size: 2rem;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.detailSinger{
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #909090;
 }
 
 .detailInfoTitle{
@@ -70,18 +165,31 @@ nav {
     border-bottom: 1px solid black;
 }
 
+.detailTitle{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.detailArtist{
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #909090;
+}
+
 .titleIcon i {
     font-size: 30px;
     padding-top: 10px;
     color: #e8344e;
 }
 
+/* detail - 앨범사진, 설명 */
 .album{
     display: flex;
-    margin-top: 20px;
+    margin-top: 15px;
     padding-bottom: 20px;
     align-items: center;
-    border-bottom: 1px solid black;
+    /*border-bottom: 1px solid black;*/
 }
 
 .album img {
@@ -91,80 +199,42 @@ nav {
     margin-right: 20px;
 }
 
-.Button {
-    width : 100px;
-    height : 50px;
-}
-
-/*리스트*/
-.subtitle-container {
-    padding : 10px 20px;
-    max-width: 1000px;
+/* 댓글 */
+.comment{
+    max-width: 565px;
     margin: auto;
-    border-bottom: 1px solid grey;
 }
 
-.indexTitle{
-    font-size: 2rem;
-    font-weight: bold;
+.commentHeader{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
 }
 
-.indexSub{
-    color: #909090;
-    font-size: 1.2rem;
+.commentTitle{
+    font-size: 20px;
+    font-weight: bolder;
 }
 
-.itemList {
-    display : flex;
-    justify-content: center;
-    flex-wrap: wrap;
+button,
+button:focus{
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: white;
 }
 
-.card.item {
-    flex-grow : 1;
-    flex-basis : 30%;
-    border : 1px #80FFA8 solid;
-    margin: 5px 6px;
-    transition: all 300ms ease-in;
+.commentDrop{
+    height: 100%;
+    transition: all 300ms ease-in-out;
 }
 
-.card.item:hover {
-    transform: translate(-5px,-5px);
-    box-shadow: 10px 10px 5px grey;
-}
-
-.card .card-content .title {
-    font-size : 15px;
-}
-
-.card .card-content .subtitle {
-    font-size : 14px;
-}
-
-.image1{
-    max-width: 1000px;
-    margin: auto;
-    padding-top: 10px;
-    order: 2;
-}
-
-/*.heart {*/
-/*    display : flex;*/
-/*    justify-content: space-between;*/
-/*    border-top: 1px;*/
+/*.commentDrop.clicked{*/
+/*    transform: rotate(180deg);*/
 /*}*/
 
-/*.heart-btn__icon,*/
-/*.heart-btn__count {*/
-/*  padding : 0 6px;*/
-/* }*/
-
-
-
-
-
-
-
-
-
-
+.commentDrop:hover{
+    transform: rotate(180deg);
+}
