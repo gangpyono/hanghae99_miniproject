@@ -3,9 +3,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
-
 client = MongoClient('mongodb://3.34.252.62', 27017, username = "test", password = "test")
-
 db = client.music_list
 
 
@@ -19,30 +17,30 @@ def main():
     music_list = list(db.music_list.find({}, {'_id': False}))
     return render_template("index.html", title=main_title, subtitle=subtitle, list=music_list)
 
-# 상세페이지로 이동
+# 상세페이지
 @app.route('/detail/<title>')
 def detail(title):
     ## db에서 title : title인 페이지 찾는다.
     music = db.music_list.find_one({'title':title},{'_id':False})
     ## 댓글 포함
     return render_template("detail.html", music = music )
-# 로그인페이지로 이동
+# 로그인페이지
 @app.route('/login')
 def login():
     return render_template("login.html")
 
 ## like 버튼클릭시 호출
-@app.route('/api/up', methods=['POST'])
-def like():
-    id_receive = request.args.get('id_give')
-    target_like = db.music_list.find_one({'id': id_receive})
-    current_like = target_like['like']
-
-    new_like = current_like +1
-    db.users.update_one({'id': id_receive}, {'$set': {'like': new_like}})
-
-    return jsonify({'msg': '좋아요 완료!'})
-
+# @app.route('/api/up', methods=['POST'])
+# def like():
+#     id_receive = request.args.get('id_give')
+#     target_like = db.music_list.find_one({'id': id_receive})
+#     current_like = target_like['like']
+#
+#     new_like = current_like +1
+#     db.users.update_one({'id': id_receive}, {'$set': {'like': new_like}})
+#
+#     return jsonify({'msg': '좋아요 완료!'})
+#
 
 
 

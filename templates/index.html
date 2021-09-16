@@ -68,17 +68,18 @@
                 </div>
                 <div class="card-content">
                     <p class="title is-4 ">{{ item.title }}</p>
-                    <p class="subtitle is-6   ">{{ item.artist }}</p>
-                    <div class="heart">
-                        <button onclick="up('{{ item.id }}')" class="button is-primary is-light heart-btn">
-                            <i class="fas fa-heart heart-btn__icon"></i>
-                            <span class="heart-btn__count">{{ item.like }}</span>
-                        </button>
-                        <button onclick="down()" class="button is-primary is-light heart-btn">
-                            <i class="fas fa-heart-broken heart-btn__icon"></i>
-                            <span class="heart__count heart-btn__count">{{ item.like }}</span>
-                        </button>
-                    </div>
+                    <p class="subtitle is-6">{{ item.artist }}</p>
+                    <p>{{ item.alumb }}</p>
+{#                    <div class="heart">#}
+{#                        <button onclick="up('{{ item.id }}')" class="button is-primary is-light heart-btn">#}
+{#                            <i class="fas fa-heart heart-btn__icon"></i>#}
+{#                            <span class="heart-btn__count">{{ item.like }}</span>#}
+{#                        </button>#}
+{#                        <button onclick="down()" class="button is-primary is-light heart-btn">#}
+{#                            <i class="fas fa-heart-broken heart-btn__icon"></i>#}
+{#                            <span class="heart__count heart-btn__count">{{ item.like }}</span>#}
+{#                        </button>#}
+{#                    </div>#}
                 </div>
             </div>
         {% endfor %}
