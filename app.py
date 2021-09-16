@@ -1,13 +1,15 @@
 from flask import Flask, render_template, request, jsonify
 
+app = Flask(__name__)
 
-from pymongo import MongoClient
 from pymongo import MongoClient
 
 client = MongoClient('mongodb://3.34.252.62', 27017, username = "test", password = "test")
+
 db = client.music_list
 
-app = Flask(__name__)
+
+
 
 ## index
 @app.route('/')  # 메인페이지로 이동

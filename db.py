@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-
-
 from pymongo import MongoClient
 
 client = MongoClient('mongodb://3.34.252.62', 27017, username = "test", password = "test")

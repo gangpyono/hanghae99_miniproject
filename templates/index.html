@@ -13,31 +13,31 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <script !src="../static/main.js" defer></script>
     <script>
-        // like버튼 클릭시
-        function up(id) {
-            $.ajax({
-                type: "POST",
-                url: "/api/up",
-                data: {id_give:id},
-                success: function (response) {
-                    alert(response['msg']);
-                    window.location.reload() //페이지 새로고침
-                }
-            });
-            console.log(id);
-        }
-
-        function down() {
-            $.ajax({
-                type: "POST",
-                url: "/",
-                data: {},
-                success: function (response) {
-                    console.log(response)
-                }
-            })
-            location.reload() //페이지 새로고침
-        }
+        // // like버튼 클릭시
+        // function up(id) {
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/api/up",
+        //         data: {id_give:id},
+        //         success: function (response) {
+        //             alert(response['msg']);
+        //             window.location.reload() //페이지 새로고침
+        //         }
+        //     });
+        //     console.log(id);
+        // }
+        //
+        // function down() {
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/",
+        //         data: {},
+        //         success: function (response) {
+        //             console.log(response)
+        //         }
+        //     })
+        //     location.reload() //페이지 새로고침
+        // }
     </script>
 
 </head>
