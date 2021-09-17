@@ -54,8 +54,14 @@
 
             function sign_out() {
                 $.removeCookie('mytoken') , {path: '/'}
-                alert('로그아웃')
+                alert('로그아웃이 완료되었습니다!')
                 window.location.href = "/login"
+            }
+
+            function showCommentArea() {
+                $("#reviewToggleBox").toggleClass("is-hidden")
+                $("#reviewDown").toggleClass("fa-caret-up")
+                $("#reviewDown").toggleClass("fa-caret-down")
             }
         </script>
     </head>
@@ -68,7 +74,7 @@
             <div class="indexTitle">Hi, {{ username }} 님!</div>
             <div id="btns-me" class="level is-mobile" style="margin-top:0rem">
                 <a class="button level-item has-text-centered is-sparta is-outlined logout" aria-label="logout"
-                    onclick="sign_out()">로그아웃<i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                    onclick="sign_out()">LOGOUT<i class="fa fa-sign-out" aria-hidden="true"></i></span>
                 </a>
             </div>
         </nav>
@@ -107,14 +113,14 @@
         <section class="comment">
             <div class="commentHeader">
                 <div class="commentTitle">Review</div>
-                <button class="commentDrop"><i class="fas fa-caret-down"></i></button>
+                <button class="commentUpDownBtn" onclick="showCommentArea()">
+                <i id="reviewDown" class="fas fa-caret-down"></i>
+                </button>
             </div>
 
-            <div class="CommentArea">
+            <div id="reviewToggleBox" class="CommentArea is-hidden">
                 <textarea placeholder="댓글을 작성해주세요" class="commentBox" id="contents" rows="5" cols="78" style="resize: none;"></textarea>
-                <div class="commentBtn">
-                    <button onclick="makeReview()" type="button">작성완료</button>
-                </div>
+                <button class="commentBtn" onclick="makeReview()" type="button">작성완료</button>
             </div>
 
             <div class="commentList" id="reviews-box">

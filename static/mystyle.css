@@ -47,7 +47,9 @@ nav {
 }
 
 .logout{
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: bold;
+    color: grey;
 }
 
 .logout i{
@@ -234,18 +236,10 @@ button:focus{
     background-color: white;
 }
 
-.commentDrop{
+.commentUpDownBtn{
     height: 100%;
     transition: all 300ms ease-in-out;
     font-size: 20px;
-}
-
-/*.commentDrop.clicked{*/
-/*    transform: rotate(180deg);*/
-/*}*/
-
-.commentDrop:hover{
-    transform: rotate(180deg);
 }
 
 .CommentArea{
@@ -269,16 +263,17 @@ textarea:focus {
 }
 
 .commentBtn{
-    padding: 5px;
-}
-
-.commentBtn button{
     font-size: 16px;
     font-weight: normal;
     color: white;
     background-color: #4acb78;
     border-radius: 3px;
     padding: 5px 10px;
+    transition: 0.3s;
+}
+
+.commentBtn:hover {
+    background-color: #00b259;
 }
 
 .commentList{
