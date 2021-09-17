@@ -116,12 +116,12 @@ def write_review():
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         username = (payload["id"])
         contents_receive = request.form['contents_give']
-        music_title_recieve = request.form['music_title_give']
+        music_title_receive = request.form['music_title_give']
 
         doc = {
             'username': username,
             'contents': contents_receive,
-            'title': music_title_recieve
+            'title': music_title_receive
 
         }
     except jwt.ExpiredSignatureError:
@@ -136,8 +136,8 @@ def write_review():
 ## 리뷰삭제
 @app.route('/review/delete', methods=['POST'])
 def delete_review():
-    id_recieve = request.form['target_id_give']
-    db.music_review.delete_one({'_id': ObjectId(id_recieve)})
+    id_receive = request.form['target_id_give']
+    db.music_review.delete_one({'_id': ObjectId(id_receive)})
     return jsonify({'msg': '삭제 완료!'})
 
 

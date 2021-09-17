@@ -46,6 +46,14 @@ nav {
     font-weight: bold;
 }
 
+.logout{
+    font-size: 14px;
+}
+
+.logout i{
+    margin-left: 5px;
+}
+
 /* 푸터 */
 footer {
     background-color: #343434;
@@ -112,7 +120,6 @@ footer {
     max-width: 1000px;
     margin: auto;
     padding-top: 10px;
-    z-index : 2;
 }
 
 .itemList {
@@ -129,7 +136,7 @@ footer {
 
 .card.item:hover {
     transform: translate(-5px,-5px);
-    box-shadow: 10px 10px 5px grey;
+    box-shadow: 10px 10px 10px grey;
 }
 
 .contentTitle{
@@ -150,7 +157,8 @@ footer {
 }
 
 .musicVideo{
-    margin: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 /* detail - 가수, 곡명, 찜버튼 */
@@ -189,7 +197,6 @@ footer {
     margin-top: 15px;
     padding-bottom: 20px;
     align-items: center;
-    /*border-bottom: 1px solid black;*/
 }
 
 .album img {
@@ -197,6 +204,7 @@ footer {
     border-radius: 5px;
     display: flex;
     margin-right: 20px;
+    box-shadow: 0px 0px 5px grey;
 }
 
 /* 댓글 */
@@ -214,7 +222,7 @@ footer {
 }
 
 .commentTitle{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bolder;
 }
 
@@ -229,6 +237,7 @@ button:focus{
 .commentDrop{
     height: 100%;
     transition: all 300ms ease-in-out;
+    font-size: 20px;
 }
 
 /*.commentDrop.clicked{*/
@@ -239,5 +248,67 @@ button:focus{
     transform: rotate(180deg);
 }
 
+.CommentArea{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.commentBox{
+    width: 460px;
+    border: none;
+    font-size: 16px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.commentBtn{
+    padding: 5px;
+}
+
+.commentBtn button{
+    font-size: 16px;
+    font-weight: normal;
+    color: white;
+    background-color: #4acb78;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+.commentList{
+    padding-bottom: 80px;
+    margin-top: 15px;
+}
+
+.commentListUser{
+    font-size: 13px;
+    color: grey;
+}
+
+.commentListContents{
+    font-size: 16px;
+}
+
+.commentListDetail{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.commentListDetailLeft{
+    display: flex;
+    flex-direction: column;
+}
+
+.commentDelete i{
+    font-size: 16px;
+    color: grey;
+}
 
 
