@@ -23,11 +23,11 @@ def home():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        username = (payload["id"])
 
-        main_title = "Hi,"  # 진자 탬플릿언어에 사용될 내용
-        subtitle = "들으면 기분좋아지는 여름노래 모음"
+
         music_list = list(db.music_list.find({}, {'_id': False}))
-        return render_template("index.html", title=main_title, subtitle=subtitle, list=music_list)
+        return render_template("index.html",username = username, list=music_list)
 
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
@@ -41,7 +41,7 @@ def login():
     return render_template('login.html', msg=msg)
 
 
-@app.route('/user/<username>')
+
 @app.route('/sign_in', methods=['POST'])
 def sign_in():
     # 로그인
@@ -95,7 +95,7 @@ def detail(title):
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         username = (payload["id"])
-        ## db에서 title : title인 페이지 찾는다.
+
         music = db.music_list.find_one({'title': title}, {'_id': False})
         reviews = list(db.music_review.find({'title': title}))
         return render_template("detail.html", music=music, reviews=reviews ,username = username)
@@ -104,7 +104,7 @@ def detail(title):
 
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
-## 댓글 포함
+
 
 
 
