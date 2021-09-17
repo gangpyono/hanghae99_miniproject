@@ -71,6 +71,7 @@ for tr in trs:
     artist = tr.select_one('td:nth-child(6) > div > div > div.ellipsis.rank02 > a').text.strip()
     album = tr.select_one('td:nth-child(7) > div > div > div > a').text.strip()
     url = urls[count]
+    like = 0
     doc = {'img': img, 'title': title, 'artist': artist, 'album': album, 'url': url, "like": like}
     db.music_list.insert_one(doc)
     count += 1
