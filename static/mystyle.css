@@ -288,16 +288,18 @@ textarea:focus {
 .commentListUser{
     font-size: 13px;
     color: grey;
+    margin-top : 10px;
 }
 
 .commentListContents{
     font-size: 16px;
+
 }
 
 .commentListDetail{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .commentListDetailLeft{
