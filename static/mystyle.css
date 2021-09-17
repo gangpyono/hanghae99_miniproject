@@ -193,6 +193,10 @@ footer {
     color: #e8344e;
 }
 
+.titleIcon i:hover {
+    transform : scale(1.1);
+}
+
 /* detail - 앨범사진, 설명 */
 .album{
     display: flex;
