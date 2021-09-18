@@ -152,12 +152,13 @@
         <i id="reviewDown" class="fas fa-caret-down"></i>
         </button>
     </div>
-
+{# 리뷰작성 #}
     <div id="reviewToggleBox" class="CommentArea is-hidden">
         <textarea placeholder="댓글을 작성해주세요" class="commentBox" id="contents" rows="5" cols="78" style="resize: none;"></textarea>
         <button class="commentBtn" onclick="makeReview()" type="button">작성완료</button>
     </div>
 
+{# 리뷰목록 #}
     <div class="commentList" id="reviews-box">
         {% for review in reviews %}
             {% if review.username ==  username %}
@@ -176,6 +177,7 @@
             {% endif %}
         {% endfor %}
     </div>
+
 </section>
 
 

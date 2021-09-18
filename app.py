@@ -17,32 +17,36 @@ client = MongoClient('mongodb://3.34.252.62', 27017, username="test", password="
 db = client.music_list
 
 
-## index
-@app.route('/')  # 메인페이지로 이동
-def home():
-    token_receive = request.cookies.get('mytoken')
-    try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        username = (payload["id"])
+# 회원가입
+@app.route('/sign_up/save', methods=['POST'])
+def sign_up():
+    username_receive = request.form['username_give']
+    password_receive = request.form['password_give']
+    password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
+    doc = {
+        "username": username_receive,  # 아이디
+        "password": password_hash,  # 비밀번호
+        "profile_name": username_receive,  # 프로필 이름 기본값은 아이디
+        "profile_pic": "",  # 프로필 사진 파일 이름
+        "profile_pic_real": "profile_pics/profile_placeholder.png",  # 프로필 사진 기본 이미지
+        "profile_info": "",  # 프로필 한 마디
+        "pickedList": [""]
+    }
+    db.users.insert_one(doc)
+    return jsonify({'result': 'success'})
 
-        music_list = list(db.music_list.find({}, {'_id': False}))
-        return render_template("index.html", username=username, list=music_list)
-
-    except jwt.ExpiredSignatureError:
-        return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
-    except jwt.exceptions.DecodeError:
-        return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
-
-
-@app.route('/login')
-def login():
-    msg = request.args.get("msg")
-    return render_template('login.html', msg=msg)
+# 중복확인
+@app.route('/sign_up/check_dup', methods=['POST'])
+def check_dup():
+    username_receive = request.form['username_give']
+    exists = bool(db.users.find_one({"username": username_receive}))
+    return jsonify({'result': 'success', 'exists': exists})
 
 
+# 로그인
 @app.route('/sign_in', methods=['POST'])
 def sign_in():
-    # 로그인
+
     username_receive = request.form['username_give']
     password_receive = request.form['password_give']
 
@@ -62,29 +66,29 @@ def sign_in():
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 
-@app.route('/sign_up/save', methods=['POST'])
-def sign_up():
-    username_receive = request.form['username_give']
-    password_receive = request.form['password_give']
-    password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
-    doc = {
-        "username": username_receive,  # 아이디
-        "password": password_hash,  # 비밀번호
-        "profile_name": username_receive,  # 프로필 이름 기본값은 아이디
-        "profile_pic": "",  # 프로필 사진 파일 이름
-        "profile_pic_real": "profile_pics/profile_placeholder.png",  # 프로필 사진 기본 이미지
-        "profile_info": "",  # 프로필 한 마디
-        "pickedList": [""]
-    }
-    db.users.insert_one(doc)
-    return jsonify({'result': 'success'})
+## 로그인페이지이동
+@app.route('/login')
+def login():
+    msg = request.args.get("msg")
+    return render_template('login.html', msg=msg)
 
 
-@app.route('/sign_up/check_dup', methods=['POST'])
-def check_dup():
-    username_receive = request.form['username_give']
-    exists = bool(db.users.find_one({"username": username_receive}))
-    return jsonify({'result': 'success', 'exists': exists})
+
+## index
+@app.route('/')  # 메인페이지로 이동
+def home():
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        username = (payload["id"])
+
+        music_list = list(db.music_list.find({}, {'_id': False}))
+        return render_template("index.html", username=username, list=music_list)
+
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
 
 # 상세페이지
@@ -98,6 +102,7 @@ def detail(title):
         pickedList = db.users.find_one({'username': username}, {'_id': False})['pickedList']
 
         music = db.music_list.find_one({'title': title}, {'_id': False})
+
         reviews = list(db.music_review.find({'title': title}))
         return render_template("detail.html", music=music, reviews=reviews, username=username, pickedList=pickedList)
     except jwt.ExpiredSignatureError:

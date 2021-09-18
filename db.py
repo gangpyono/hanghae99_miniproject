@@ -7,6 +7,8 @@ client = MongoClient('mongodb://3.34.252.62', 27017, username = "test", password
 
 db = client.music_list
 
+
+## 이미지링크
 imgs = [
             "https://musicmeta-phinf.pstatic.net/album/004/673/4673490.jpg?type=r480Fll&v=20210303150028",
             "https://musicmeta-phinf.pstatic.net/album/004/614/4614746.jpg?type=r480Fll&v=20210802045022",
@@ -30,7 +32,7 @@ imgs = [
             "https://musicmeta-phinf.pstatic.net/album/003/198/3198839.jpg?type=r480Fll&v=20210802055026",
             "https://musicmeta-phinf.pstatic.net/album/004/686/4686872.jpg?type=r480Fll&v=20210303150027"
         ]
-
+## 유튜브링크
 urls = [
             "https://www.youtube.com/embed/ESKfHHtiSjs",
             "https://www.youtube.com/embed/tDukIfFzX18",
@@ -55,7 +57,7 @@ urls = [
             "https://www.youtube.com/embed/d2ytH5mymWY"
        ]
 
-# 멜론사이트 이미지,제목,가수,앨범명 크롤링
+# 멜론사이트 제목,가수,앨범명 크롤링
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 data = requests.get('https://www.melon.com/chart/month/index.htm?classCd=GN0000&moved=Y&rankMonth=202008',headers=headers)
